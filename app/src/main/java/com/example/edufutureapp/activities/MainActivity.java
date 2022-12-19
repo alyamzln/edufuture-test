@@ -1,4 +1,4 @@
-package com.example.edufutureapp;
+package com.example.edufutureapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.edufutureapp.R;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -16,14 +19,15 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+
     }
 
     public void signup(View view) {
-        startActivity(new Intent(MainActivity.this,SignUpActivity.class));
+        startActivity(new Intent(MainActivity.this, SignUpActivity.class));
     }
 
     public void login(View view) {
-        startActivity(new Intent(MainActivity.this,LoginActivity.class));
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
     }
 
 }

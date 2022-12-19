@@ -1,8 +1,10 @@
-package com.example.edufutureapp;
+package com.example.edufutureapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.edufutureapp.R;
 
 public class PageNavigation extends AppCompatActivity {
 

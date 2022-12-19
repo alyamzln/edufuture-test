@@ -1,8 +1,9 @@
-package com.example.edufutureapp;
+package com.example.edufutureapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.edufutureapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,16 +23,19 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private EditText emailEt,passwordEt1,passwordEt2;
+    private EditText emailEt,passwordEt1,passwordEt2,firstNameEt,lastNameEt;
     private Button SignUpButton;
     private TextView SignInTv;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         firebaseAuth=FirebaseAuth.getInstance();
+        firstNameEt=findViewById(R.id.firstname);
+        lastNameEt=findViewById(R.id.lastname);
         emailEt=findViewById(R.id.email);
         passwordEt1=findViewById(R.id.password1);
         passwordEt2=findViewById(R.id.password2);
@@ -46,17 +51,27 @@ public class SignUpActivity extends AppCompatActivity {
         SignInTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(SignUpActivity.this,MainActivity.class);
+                Intent intent=new Intent(SignUpActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
     }
     private void Register(){
+        String firstname=firstNameEt.getText().toString();
+        String lastname=lastNameEt.getText().toString();
         String email=emailEt.getText().toString();
         String password1=passwordEt1.getText().toString();
         String password2=passwordEt2.getText().toString();
-        if(TextUtils.isEmpty(email)){
+        if(TextUtils.isEmpty(firstname)){
+            firstNameEt.setError("Enter your first name");
+            return;
+        }
+        else if(TextUtils.isEmpty(lastname)){
+            lastNameEt.setError("Enter your last name");
+            return;
+        }
+        else if(TextUtils.isEmpty(email)){
             emailEt.setError("Enter your email");
             return;
         }

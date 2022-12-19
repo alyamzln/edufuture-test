@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -34,7 +34,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Where Your Journey to Success Starts Here"
+        android:text="Where Your Journey to Success Begins"
         android:fontFamily="@font/poppins_regular"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"

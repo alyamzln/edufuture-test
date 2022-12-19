@@ -1,41 +1,62 @@
 {
   "project_info": {
-    "project_number": "27805705215",
-    "project_id": "edufutureapp",
-    "storage_bucket": "edufutureapp.appspot.com"
+    "project_number": "904724494231",
+    "project_id": "edufuture-app-926be",
+    "storage_bucket": "edufuture-app-926be.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:27805705215:android:4e5ad4fc1ab10332f03dca",
+        "mobilesdk_app_id": "1:904724494231:android:d7cac7725ef67c0fc8b6d2",
         "android_client_info": {
-          "package_name": "com.example.edufutureapp"
+          "package_name": "com.example.edufuture"
         }
       },
       "oauth_client": [
         {
-          "client_id": "27805705215-kfeue28p0ufepa2qen6bln1t2ual1a13.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.edufutureapp",
-            "certificate_hash": "c09c596d94794987a82cd51f0af63afb70b51e0c"
-          }
-        },
-        {
-          "client_id": "27805705215-derr46jp4av0kkd5edhfskp4so9nehba.apps.googleusercontent.com",
+          "client_id": "904724494231-p98onsqo03pkbhtr0elj4m6qgfqandm8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyANGlzJtnlk94-ZXEJyLlcb-cWMHuFjFxI"
+          "current_key": "AIzaSyDVwH5fhH7Y1o67aiOBtlrvZ9Sn28HSqzM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "27805705215-derr46jp4av0kkd5edhfskp4so9nehba.apps.googleusercontent.com",
+              "client_id": "904724494231-p98onsqo03pkbhtr0elj4m6qgfqandm8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904724494231:android:de8ed788d241e778c8b6d2",
+        "android_client_info": {
+          "package_name": "com.example.edufutureapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904724494231-p98onsqo03pkbhtr0elj4m6qgfqandm8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVwH5fhH7Y1o67aiOBtlrvZ9Sn28HSqzM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "904724494231-p98onsqo03pkbhtr0elj4m6qgfqandm8.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

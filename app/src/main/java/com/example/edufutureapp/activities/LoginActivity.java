@@ -1,4 +1,4 @@
-package com.example.edufutureapp;
+package com.example.edufutureapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.edufutureapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -44,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         SignUpTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(LoginActivity.this,SignUpActivity.class);
+                Intent intent=new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -69,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){ //function if user input match firebase records
                     Toast.makeText(LoginActivity.this,"Login Successfully",Toast.LENGTH_LONG).show();
-                    Intent intent=new Intent(LoginActivity.this,PageNavigation.class);
+                    Intent intent=new Intent(LoginActivity.this, PageNavigation.class);
                     startActivity(intent);
                     finish();
                 }
