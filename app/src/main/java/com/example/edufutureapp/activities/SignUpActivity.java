@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -17,23 +18,33 @@ import android.widget.Toast;
 
 import com.example.edufutureapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
-
+    public static final String TAG = "TAG";
     private EditText emailEt,passwordEt1,passwordEt2,firstNameEt,lastNameEt;
     private Button SignUpButton;
     private TextView SignInTv;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore fStore;
+    String userID;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         firebaseAuth=FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
         firstNameEt=findViewById(R.id.firstname);
         lastNameEt=findViewById(R.id.lastname);
         emailEt=findViewById(R.id.email);
@@ -103,12 +114,28 @@ public class SignUpActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){ //function if user is successfully registered
                     Toast.makeText(SignUpActivity.this,"Successfully registered",Toast.LENGTH_LONG).show();
+                    userID = firebaseAuth.getCurrentUser().getUid();
+                    DocumentReference documentReference = fStore.collection ( "users").document(userID);
+                    Map<String,Object> user = new HashMap<>();
+                    user.put("fName",firstname);
+                    user.put("lName",lastname);
+                    user.put("email",email);
+                    user.put("password",password1);
+                    documentReference.set(user).addOnSuccessListener ((OnSuccessListener)(aVoid) -> {
+                            Log.d (TAG, "onSuccess: user Profile is created for " + userID);
+
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                        public void onFailure(@NonNull Exception e){
+                                Log.d (TAG, "onFailure: " + e.toString());
+                        }
+                    });
                     Intent intent=new Intent(SignUpActivity.this,MainActivity.class);
                     startActivity(intent);
                     finish();
                 }
                 else{ //function if user is fail to be registered
-                    Toast.makeText(SignUpActivity.this,"Sign up fail!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignUpActivity.this,"Sign up fail!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                 }
                 progressDialog.dismiss();
             }
