@@ -11,7 +11,7 @@ public class MessagingService extends FirebaseMessagingService {
     @Override
     public void onNewToken (@NonNull String token) {
         super.onNewToken(token);
-        Log.d ( "FCM", "Token: "+ token);
+        Log.d ( "FCM", "Token: " + token);
 
     }
 
