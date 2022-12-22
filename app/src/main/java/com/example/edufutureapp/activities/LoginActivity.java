@@ -65,10 +65,12 @@ public class LoginActivity extends AppCompatActivity {
             passwordEt.setError("Enter your password");
             return;
         }
-        progressDialog.setMessage("Please wait...");
+        progressDialog.setTitle("Please Wait");
+        progressDialog.setMessage("Just a moment...");
         progressDialog.show();
         progressDialog.setCanceledOnTouchOutside(false);
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){ //function if user input match firebase records

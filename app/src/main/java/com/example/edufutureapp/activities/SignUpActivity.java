@@ -56,6 +56,7 @@ public class SignUpActivity extends AppCompatActivity {
         SignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Register();
             }
         });
@@ -106,7 +107,8 @@ public class SignUpActivity extends AppCompatActivity {
             emailEt.setError("Invalid email");
             return;
         }
-        progressDialog.setMessage("Please wait...");
+        progressDialog.setTitle("Creating Account");
+        progressDialog.setMessage("We are creating your account...");
         progressDialog.show();
         progressDialog.setCanceledOnTouchOutside(false);
         firebaseAuth.createUserWithEmailAndPassword(email,password1).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
