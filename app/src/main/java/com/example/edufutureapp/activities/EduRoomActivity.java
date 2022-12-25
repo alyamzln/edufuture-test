@@ -32,42 +32,32 @@ public class EduRoomActivity extends AppCompatActivity {
         joinBtn = findViewById(R.id.joinBtn);
         shareBtn = findViewById(R.id.shareBtn);
 
+                URL serverURL = null;
+                try {
+                    serverURL = new URL("https://meet.jit.si");
+
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+
+                JitsiMeetConferenceOptions defaultOptions
+                        = new JitsiMeetConferenceOptions.Builder()
+                        .setServerURL(serverURL)
+                        .setFeatureFlag("welcomepage.enabled", false)
+                        .build();
+
+                JitsiMeet.setDefaultConferenceOptions(defaultOptions);
+
         joinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (codeBox.getText().toString().isEmpty())
-                {
-                    Toast.makeText(EduRoomActivity.this, "Please enter room ID", Toast.LENGTH_SHORT).show();
-                }
-
-                else
-                {
                 JitsiMeetConferenceOptions options
                         = new JitsiMeetConferenceOptions.Builder()
                         .setRoom(codeBox.getText().toString()).setFeatureFlag("welcomepage.enabled", false)
                         .build();
                 JitsiMeetActivity.launch(EduRoomActivity.this, options);
-            }}
-        });
-
-        URL serverURL = null;
-        try {
-            serverURL = new URL("");
-            JitsiMeetConferenceOptions defaultOptions
-                    = new JitsiMeetConferenceOptions.Builder()
-                    .setServerURL(serverURL)
-                    .setFeatureFlag("welcomepage.enabled", false)
-                    .build();
-
-            JitsiMeet.setDefaultConferenceOptions(defaultOptions);
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-
-
+            }});
 
         shareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
